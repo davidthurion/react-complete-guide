@@ -7,12 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>This is react!</h1>
-        <Person />
-        <Person />
-        <Person />
-        <Person />
-        <Person />
-        <Person />
+        <Person name="Max" age="28" />
+        <Person name="David" age="34">
+          My hobbies: Climbing
+        </Person>
+        <Person name="Elza" age="30" />
       </div>
     );
     // return React.createElement(
