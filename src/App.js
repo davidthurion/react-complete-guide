@@ -6,41 +6,23 @@ class App extends Component {
   state = {
     persons: [
       {
+        id: "kmlk",
         name: "Max",
         age: 28
       },
       {
+        id: "SSsf",
         name: "David",
         age: 34
       },
       {
+        id: "qska",
         name: "Elza",
         age: 30
       }
     ],
     otherState: "yesss",
     showPersons: false
-  };
-
-  switchNameHandler = newName => {
-    // console.log("click");
-    // DON'T DO THIS: this.state.persons[0].name = "Bernard";
-    this.setState({
-      persons: [
-        {
-          name: newName,
-          age: 28
-        },
-        {
-          name: "David",
-          age: 34
-        },
-        {
-          name: "Elza",
-          age: 30
-        }
-      ]
-    });
   };
 
   nameChangedHandler = event => {
@@ -62,6 +44,15 @@ class App extends Component {
     });
   };
 
+  deletePersonHandler = personIndex => {
+    // const persons = this.state.persons.slice();
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({
+      persons: persons
+    });
+  };
+
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
@@ -80,7 +71,17 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Person
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                key={person.id}
+              />
+            );
+          })}
+          {/* <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}
           />
@@ -95,7 +96,7 @@ class App extends Component {
           <Person
             name={this.state.persons[2].name}
             age={this.state.persons[2].age}
-          />
+          /> */}
         </div>
       );
     }
