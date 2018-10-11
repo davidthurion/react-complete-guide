@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./App.module.css";
+import styles from "./App.module.scss";
 import Person from "./Person/Person";
 
 class App extends Component {
@@ -86,10 +86,10 @@ class App extends Component {
 
     let assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      assignedClasses.push(styles.red);
+      assignedClasses.push("red");
     }
     if (this.state.persons.length <= 1) {
-      assignedClasses.push(styles.bold);
+      assignedClasses.push("bold");
     }
 
     return (
